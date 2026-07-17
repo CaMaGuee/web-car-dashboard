@@ -54,11 +54,13 @@ body {
 }
 
 .speed-box {
+    --gauge-size: clamp(260px, 70vw, 420px);
+
     position: relative;
-    width: 320px;
+    width: var(--gauge-size);
     aspect-ratio: 1 / 1;
     background: #111;
-    border: 4px solid #555;
+    border: max(2px, calc(var(--gauge-size) * 0.0125)) solid #555;
     border-radius: 50%;
     text-align: center;
 
@@ -68,7 +70,7 @@ body {
     justify-content: center;
 
     box-sizing: border-box;
-    padding: 24px;
+    padding: calc(var(--gauge-size) * 0.075);
     overflow: hidden;
 }
 
@@ -92,15 +94,16 @@ body {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 3px;
-    height: 160px;
-    background: linear-gradient(to top,
-            #00000000 0%,
-            #00000000 60%,
-            #ff4d4d 82%,
-            #ff4d4d 95%,
-            #00000000 100%);
-
+    width: max(2px, calc(var(--gauge-size) * 0.009));
+    height: calc(var(--gauge-size) * 0.5);
+    background: linear-gradient(
+        to top,
+        #00000000 0%,
+        #00000000 60%,
+        #ff4d4d 82%,
+        #ff4d4d 95%,
+        #00000000 100%
+    );
     transform-origin: center bottom;
     transform: translateX(-50%) translateY(-100%) rotate(-120deg);
     border-radius: 999px;
@@ -108,18 +111,21 @@ body {
 
 .label-speed {
     --angle: 0deg;
-    --radius: 130px;
+    --radius: calc(var(--gauge-size) * 0.40625);
 
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 15px;
+    font-size: clamp(11px, calc(var(--gauge-size) * 0.047), 18px);
     font-weight: 500;
     color: #555;
     z-index: 2;
 
     transform:
-        rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1)) translate(-50%, -50%);
+        rotate(var(--angle))
+        translateY(calc(var(--radius) * -1))
+        rotate(calc(var(--angle) * -1))
+        translate(-50%, -50%);
 }
 
 .label-0 {
@@ -154,14 +160,15 @@ body {
 }
 
 #speed {
-    font-size: 68px;
+    font-size: clamp(42px, calc(var(--gauge-size) * 0.2125), 78px);
     font-weight: 700;
-    margin: 0 0 12px 0;
+    margin: 0 0 calc(var(--gauge-size) * 0.0375) 0;
     color: #ccc;
+    line-height: 1;
 }
 
 #unit {
-    font-size: 14px;
+    font-size: clamp(11px, calc(var(--gauge-size) * 0.044), 16px);
     color: #ccc;
     font-weight: 700;
     margin: 0;
