@@ -29,7 +29,11 @@ body {
 .border-frame::before {
     content: "";
     position: absolute;
-    inset: 10px;
+    width: calc(90% - 20px);
+    height: calc(90% - 20px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     box-sizing: border-box;
 
     border: 2px solid rgba(210, 225, 255, 0.18);
@@ -40,10 +44,20 @@ body {
         0 0 18px rgba(70, 130, 220, 0.08),
         inset 0 0 0 1px rgba(255, 255, 255, 0.035);
 
-    clip-path: polygon(0 10px, 10px 10px, 10px 0,
-            calc(90% - 10px) 0, calc(90% - 10px) 10px, 100% 10px,
-            100% calc(90% - 10px), calc(90% - 10px) calc(90% - 10px), calc(90% - 10px) 100%,
-            10px 100%, 10px calc(90% - 10px), 0 calc(90% - 10px));
+    clip-path: polygon(
+        0 10px,
+        10px 10px,
+        10px 0,
+        calc(100% - 10px) 0,
+        calc(100% - 10px) 10px,
+        100% 10px,
+        100% calc(100% - 10px),
+        calc(100% - 10px) calc(100% - 10px),
+        calc(100% - 10px) 100%,
+        10px 100%,
+        10px calc(100% - 10px),
+        0 calc(100% - 10px)
+    );
 
     background:
         linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)) padding-box;
@@ -52,12 +66,27 @@ body {
 .border-frame::after {
     content: "";
     position: absolute;
-    inset: 18px;
+    width: calc(90% - 36px);
+    height: calc(90% - 36px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     box-sizing: border-box;
-    clip-path: polygon(0 8px, 8px 8px, 8px 0,
-            calc(90% - 8px) 0, calc(90% - 8px) 8px, 100% 8px,
-            100% calc(90% - 8px), calc(90% - 8px) calc(90% - 8px), calc(90% - 8px) 100%,
-            8px 100%, 8px calc(90% - 8px), 0 calc(90% - 8px));
+
+    clip-path: polygon(
+        0 8px,
+        8px 8px,
+        8px 0,
+        calc(100% - 8px) 0,
+        calc(100% - 8px) 8px,
+        100% 8px,
+        100% calc(100% - 8px),
+        calc(100% - 8px) calc(100% - 8px),
+        calc(100% - 8px) 100%,
+        8px 100%,
+        8px calc(100% - 8px),
+        0 calc(100% - 8px)
+    );
 
     background:
         linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.0)) top / 100% 1px no-repeat,
