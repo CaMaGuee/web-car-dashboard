@@ -109,16 +109,22 @@ async function handleStartClick() {
 
         if (result.state === "granted") {
             statusEl.textContent = "이미 위치 권한이 허용되어 있습니다.";
+            overlayEl.style.display = "none";
+            dashboardEl.style.display = "block";
             startTracking();
             return;
         }
 
         if (result.state === "prompt") {
+            overlayEl.style.display = "none";
+            dashboardEl.style.display = "block";
             startTracking();
             return;
         }
 
         if (result.state === "denied") {
+            overlayEl.style.display = "block";
+            dashboardEl.style.display = "none";
             speedEl.textContent = "권한 차단됨";
             statusEl.textContent = "브라우저 주소창의 사이트 설정에서 위치 권한을 직접 허용해야 합니다.";
             return;
