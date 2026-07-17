@@ -151,6 +151,14 @@ body {
     justify-content: center;
 }
 
+@media (orientation: landscape) {
+    .dashboard {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-inline-start: clamp(32px, 6vw, 72px);
+    }
+}
+
 .map {
     overflow: hidden;
 }
@@ -163,9 +171,8 @@ body {
     z-index: 500;
     background:
         radial-gradient(circle at center,
-            #00000000 50%,
-            #000000aa 70%,
-            #000000ff 90%);
+            #00000000 30%,
+            #000000ff 80%);
 }
 
 .map,
