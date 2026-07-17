@@ -14,7 +14,8 @@ body {
 }
 
 .app {
-    width: 100%;
+    width: 98%;
+    height: 98%;
     display: flex;
     justify-content: center;
     padding: 24px;
