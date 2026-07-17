@@ -148,14 +148,16 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    justify-content: center;
+    justify-content: flex-end;
+    margin-bottom: clamp(32px, 6vh, 72px);
 }
 
 @media (orientation: landscape) {
     .dashboard {
         flex-direction: row;
         justify-content: flex-start;
-        padding-inline-start: clamp(32px, 6vw, 72px);
+        padding-inline-start: clamp(32px, 6vw, 80px);
+        margin-bottom: 0;
     }
 }
 
@@ -218,7 +220,7 @@ body {
 }
 
 .speed-box {
-    --gauge-size: clamp(220px, min(78vw, 78dvh), 420px);
+    --gauge-size: clamp(220px, min(65vw, 65dvh), 420px);
 
     position: relative;
     width: var(--gauge-size);
@@ -268,6 +270,93 @@ body {
     -webkit-mask: radial-gradient(circle, transparent 66.5%, #000000 67%);
     mask: radial-gradient(circle, transparent 66.5%, #000000 67%);
     z-index: 0;
+}
+
+@media (orientation: portrait) {
+    .speed-box {
+        overflow: visible;
+        z-index: 900;
+    }
+
+    .speed-box::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translateX(-50%);
+
+        width: calc(var(--gauge-size) * 2.35);
+        height: calc(var(--gauge-size) * 2);
+        border-radius: 50%;
+
+        z-index: -1;
+        pointer-events: none;
+
+        background:
+            radial-gradient(
+                circle at 50% 24%,
+                rgba(125, 175, 255, 0.128) 0%,
+                rgba(125, 175, 255, 0.056) 12%,
+                rgba(125, 175, 255, 0.016) 22%,
+                rgba(125, 175, 255, 0.00) 34%
+            ),
+            radial-gradient(
+                circle at 50% 18%,
+                rgba(255, 255, 255, 0.128) 0%,
+                rgba(255, 255, 255, 0.056) 10%,
+                rgba(255, 255, 255, 0.016) 18%,
+                rgba(255, 255, 255, 0.00) 28%
+            ),
+            radial-gradient(
+                circle at 50% 34%,
+                rgba(46, 52, 61, 0.8) 0%,
+                rgba(27, 32, 40, 0.8) 26%,
+                rgba(17, 22, 29, 0.8) 44%,
+                rgba(9, 12, 17, 0.8) 62%,
+                rgba(3, 4, 5, 0.8) 100%
+            );
+
+        box-shadow:
+            0 0 0 1px rgba(210, 225, 255, 0.10),
+            0 0 0 2px rgba(120, 170, 255, 0.05),
+            0 -8px 30px rgba(70, 130, 220, 0.14),
+            0 22px 40px rgba(0, 0, 0, 0.42),
+            0 50px 80px rgba(0, 0, 0, 0.28),
+            inset 0 2px 0 rgba(255, 255, 255, 0.10),
+            inset 0 10px 24px rgba(255, 255, 255, 0.03),
+            inset 0 -36px 60px rgba(0, 0, 0, 0.40);
+
+        /* 중앙 계기판과 겹치는 영역을 완전히 제거 */
+        -webkit-mask:
+            radial-gradient(
+                circle at 50% 0%,
+                transparent 0,
+                transparent calc(var(--gauge-size) * 0.5),
+                #000 calc(var(--gauge-size) * 0.6)
+            );
+        mask:
+            radial-gradient(
+                circle at 50% 0%,
+                transparent 0,
+                transparent calc(var(--gauge-size) * 0.5),
+                #000 calc(var(--gauge-size) * 0.6)
+            );
+    }
+
+    .speed-box {
+        box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.04),
+            0 0 0 2px rgba(120, 170, 255, 0.04),
+            0 10px 24px rgba(0, 0, 0, 0.32);
+    }
+
+    .needle {
+        z-index: 2;
+    }
+
+    .speed-content {
+        z-index: 3;
+    }
 }
 
 .needle {
