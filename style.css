@@ -14,15 +14,15 @@ body {
 }
 
 .app {
-    width: 98%;
-    height: 98%;
-    position: absolute;
+    width: 100%;
+    min-height: 100dvh;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
     justify-content: center;
-    padding: 24px;
+    text-align: center;
+    padding: clamp(12px, 2vw, 24px);
 }
 
 .overlay {
@@ -54,7 +54,7 @@ body {
 }
 
 .speed-box {
-    --gauge-size: clamp(260px, 70vw, 420px);
+    --gauge-size: clamp(220px, min(78vw, 78dvh), 420px);
 
     position: relative;
     width: var(--gauge-size);
@@ -72,6 +72,12 @@ body {
     box-sizing: border-box;
     padding: calc(var(--gauge-size) * 0.075);
     overflow: hidden;
+}
+
+@media (orientation: landscape) {
+    .speed-box {
+        --gauge-size: clamp(180px, min(60vw, 68dvh), 360px);
+    }
 }
 
 .speed-box::before {
@@ -167,6 +173,12 @@ body {
     line-height: 1;
 }
 
+@media (orientation: landscape) {
+    #speed {
+        font-size: clamp(34px, calc(var(--gauge-size) * 0.18), 64px);
+    }
+}
+
 #unit {
     font-size: clamp(11px, calc(var(--gauge-size) * 0.044), 16px);
     color: #ccc;
@@ -181,4 +193,12 @@ body {
     margin-bottom: -70px;
     max-width: 220px;
     line-height: 1.4;
+}
+
+@media (orientation: landscape) {
+    #status {
+        font-size: clamp(10px, calc(var(--gauge-size) * 0.035), 13px);
+        margin-top: calc(var(--gauge-size) * 0.05);
+        max-width: calc(var(--gauge-size) * 0.62);
+    }
 }
