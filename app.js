@@ -18,8 +18,8 @@ function startTracking() {
             const speedMps = position.coords.speed;
 
             if (speedMps == null) {
-                speedEl.textContent = "측정 불가";
-                statusEl.textContent = `속도 값을 제공하지 않습니다. 정확도: ${Math.round(position.coords.accuracy)}m`;
+                speedEl.textContent = "대기중...";
+                statusEl.textContent = `측정 대기중 입니다. 정확도: ${Math.round(position.coords.accuracy)}m`;
                 return;
             }
 
@@ -33,51 +33,51 @@ function startTracking() {
                 statusEl.textContent = "위치 권한이 거부되었습니다. 브라우저 사이트 설정에서 허용해 주십시오.";
             } else if (error.code === 2) {
                 speedEl.textContent = "위치 불가";
-        statusEl.textContent = "현재 위치를 가져올 수 없습니다.";
-      } else if (error.code === 3) {
-        speedEl.textContent = "시간 초과";
-        statusEl.textContent = "위치 응답 시간이 초과되었습니다.";
-      } else {
-        speedEl.textContent = "오류";
-        statusEl.textContent = error.message;
-      }
-    },
-    {
-      enableHighAccuracy: true,
-      maximumAge: 0,
-      timeout: 10000
-    }
-  );
+                statusEl.textContent = "현재 위치를 가져올 수 없습니다.";
+            } else if (error.code === 3) {
+                speedEl.textContent = "시간 초과";
+                statusEl.textContent = "위치 응답 시간이 초과되었습니다.";
+            } else {
+                speedEl.textContent = "오류";
+                statusEl.textContent = error.message;
+            }
+        },
+        {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 5000
+        }
+    );
 }
 
 async function handleStartClick() {
-  if (!navigator.permissions) {
-    startTracking();
-    return;
-  }
-
-  try {
-    const result = await navigator.permissions.query({ name: "geolocation" });
-
-    if (result.state === "granted") {
-      statusEl.textContent = "이미 위치 권한이 허용되어 있습니다.";
-      startTracking();
-      return;
+    if (!navigator.permissions) {
+        startTracking();
+        return;
     }
 
-    if (result.state === "prompt") {
-      startTracking();
-      return;
-    }
+    try {
+        const result = await navigator.permissions.query({ name: "geolocation" });
 
-    if (result.state === "denied") {
-      speedEl.textContent = "권한 차단됨";
-      statusEl.textContent = "브라우저 주소창의 사이트 설정에서 위치 권한을 직접 허용해야 합니다.";
-      return;
+        if (result.state === "granted") {
+            statusEl.textContent = "이미 위치 권한이 허용되어 있습니다.";
+            startTracking();
+            return;
+        }
+
+        if (result.state === "prompt") {
+            startTracking();
+            return;
+        }
+
+        if (result.state === "denied") {
+            speedEl.textContent = "권한 차단됨";
+            statusEl.textContent = "브라우저 주소창의 사이트 설정에서 위치 권한을 직접 허용해야 합니다.";
+            return;
+        }
+    } catch (err) {
+        startTracking();
     }
-  } catch (err) {
-    startTracking();
-  }
 }
 
 startBtn.addEventListener("click", handleStartClick);
