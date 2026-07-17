@@ -197,8 +197,8 @@ body {
 
 @media (orientation: landscape) {
     #status {
-        font-size: clamp(10px, calc(var(--gauge-size) * 0.020), 13px);
+        font-size: clamp(10px, calc(var(--gauge-size) * 0.035), 13px);
         margin-top: calc(var(--gauge-size) * 0.05);
-        max-width: calc(var(--gauge-size) * 0.62);
+        max-width: calc(var(--gauge-size) * 0.75);
     }
 }
