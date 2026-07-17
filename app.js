@@ -64,8 +64,8 @@ function startTracking() {
 
             if (speedMps == null) {
                 hasSpeed = false;
-                targetSpeedKmh = null;
-                speedEl.textContent = "대기중";
+                targetSpeedKmh = 0.0;
+                speedEl.textContent = "0.0";
                 statusEl.textContent = `측정 대기중 입니다. 정확도: ${Math.round(position.coords.accuracy)}m`;
                 return;
             }
