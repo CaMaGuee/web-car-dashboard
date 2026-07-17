@@ -2,7 +2,7 @@ html,
 body {
     margin: 0;
     height: 100%;
-    background: #111;
+    background: #000;
     color: #fff;
     font-family: sans-serif;
 }
@@ -46,24 +46,36 @@ body {
 
 .dashboard {
     display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: black;
 }
 
 .speed-box {
+    width: 320px;
+    aspect-ratio: 1 / 1;
+    background: #111;
+    border: 4px solid #555;
+    border-radius: 50%;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    padding: 24px;
 }
 
 #speed {
     font-size: 72px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin: 0 0 12px 0;
+    color: #ccc;
 }
 
 #status {
     font-size: 14px;
     color: #aaa;
-    margin-bottom: 16px;
+    margin: 0;
+    max-width: 220px;
+    line-height: 1.4;
 }
