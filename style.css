@@ -37,6 +37,8 @@ body {
     align-items: center;
     text-align: center;
     justify-content: center;
+
+    z-index: 9999;
 }
 
 #startBtn {
@@ -50,7 +52,75 @@ body {
 }
 
 .dashboard {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.map {
+    overflow: hidden;
+}
+
+.map::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 500;
+    background:
+        radial-gradient(
+            circle at center,
+            #00000000 0%,
+            #00000030 50%,
+            #000000ff 80%
+        );
+}
+
+.map,
+.leaflet-container,
+.leaflet-pane,
+.leaflet-map-pane,
+.leaflet-tile-pane {
+    background: #05070b !important;
+}
+
+.leaflet-container {
+    background:
+        radial-gradient(circle at 50% 50%, #101a28 0%, #0a1018 45%, #06090d 100%);
+}
+
+.map-tiles-hud {
+    filter:
+        brightness(0.58) invert(1) contrast(2.1) hue-rotate(195deg) saturate(0.22) brightness(0.78);
+    opacity: 0.82;
+}
+
+.leaflet-pane,
+.leaflet-tile-pane {
+    background: transparent;
+}
+
+.leaflet-control-container{
     display: none;
+}
+
+.leaflet-marker-icon,
+.leaflet-interactive {
+    filter: drop-shadow(0 0 10px rgba(90, 170, 255, 0.20));
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: rgba(11, 18, 28, 0.92);
+    color: #e8f2ff;
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(120, 170, 255, 0.08);
 }
 
 .speed-box {
@@ -59,7 +129,7 @@ body {
     position: relative;
     width: var(--gauge-size);
     aspect-ratio: 1 / 1;
-    background: #111;
+    background: radial-gradient(circle, #00000030 0%, #000000ff 70%);
     border: max(2px, calc(var(--gauge-size) * 0.0125)) solid #555;
     border-radius: 50%;
     text-align: center;
@@ -72,6 +142,8 @@ body {
     box-sizing: border-box;
     padding: calc(var(--gauge-size) * 0.075);
     overflow: hidden;
+
+    z-index: 1000;
 }
 
 @media (orientation: landscape) {
@@ -87,12 +159,17 @@ body {
     border-radius: 50%;
     background:
         conic-gradient(from 240deg,
-            #6f7f8c80 0deg 144deg,
-            #c8a96b90 144deg 192deg,
-            #8b4a5490 192deg 240deg,
+            #33333390 0deg,
+            #33333390 120deg,
+            #7a6a4b90 138deg,
+            #c8a96b90 144deg,
+            #c8a96b90 176deg,
+            #a16c6290 188deg,
+            #8b4a5490 192deg,
+            #8b4a5490 240deg,
             transparent 240deg 360deg);
-    -webkit-mask: radial-gradient(circle, transparent 66.5%, #000 67%);
-    mask: radial-gradient(circle, transparent 66.5%, #000 67%);
+    -webkit-mask: radial-gradient(circle, transparent 66.5%, #000000 67%);
+    mask: radial-gradient(circle, transparent 66.5%, #000000 67%);
     z-index: 0;
 }
 
@@ -102,17 +179,16 @@ body {
     top: 50%;
     width: max(2px, calc(var(--gauge-size) * 0.009));
     height: calc(var(--gauge-size) * 0.5);
-    background: linear-gradient(
-        to top,
-        #00000000 0%,
-        #00000000 60%,
-        #ff4d4d 82%,
-        #ff4d4d 95%,
-        #00000000 100%
-    );
+    background: linear-gradient(to top,
+            #00000000 0%,
+            #00000000 50%,
+            #ff4d4d 90%,
+            #ff4d4d 95%,
+            #00000000 100%);
     transform-origin: center bottom;
     transform: translateX(-50%) translateY(-100%) rotate(-120deg);
     border-radius: 999px;
+    z-index: 1;
 }
 
 .label-speed {
@@ -125,13 +201,10 @@ body {
     font-size: clamp(11px, calc(var(--gauge-size) * 0.047), 18px);
     font-weight: 500;
     color: #555;
-    z-index: 2;
+    z-index: 0;
 
     transform:
-        rotate(var(--angle))
-        translateY(calc(var(--radius) * -1))
-        rotate(calc(var(--angle) * -1))
-        translate(-50%, -50%);
+        rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1)) translate(-50%, -50%);
 }
 
 .label-0 {

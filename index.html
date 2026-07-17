@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>속도계 테스트</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./leaflet_1.9.4.css" />
 </head>
 
 <body>
@@ -19,7 +20,7 @@
       </div>
     </div>
 
-    <div class="dashboard" id="dashboard">
+    <div class="dashboard map" id="dashboard">
       <div class="speed-box">
         <div class="speed-content">
           <div id="speed">대기중</div>
@@ -27,7 +28,7 @@
           <div id="status">위치 권한이 필요합니다.</div>
         </div>
 
-      <div class="needle" id="needle"></div>
+        <div class="needle" id="needle"></div>
 
         <div class="label-speed label-0">0</div>
         <div class="label-speed label-50">50</div>
@@ -39,6 +40,7 @@
   </main>
 
   <script src="./app.js"></script>
+  <script src="./leaflet_1.9.4.js"></script>
 </body>
 
 </html>
