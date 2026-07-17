@@ -1,0 +1,19 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    background: #111;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#speed {
+    font-size: 72px;
+    font-weight: 700;
+}

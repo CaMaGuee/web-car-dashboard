@@ -1,35 +1,14 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  />
-  <title>실시간 속도계</title>
-  <link rel="stylesheet" href="./style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>속도계 테스트</title>
 </head>
-<body>
-  <main class="app">
-    <section class="speed-card" aria-label="현재 속도 표시">
-      <div class="label">현재 속도</div>
-      <div class="speed-value">
-        <span id="speedKmh">0.0</span>
-        <span class="unit">km/h</span>
-      </div>
-      <div class="sub-info" id="statusText">시작 버튼을 누르면 GPS 속도 측정을 시작합니다.</div>
-      <div class="debug">
-        <div>정확도: <span id="accuracyText">-</span></div>
-        <div>원시 속도: <span id="rawSpeedText">-</span></div>
-        <div>필터 속도: <span id="filteredSpeedText">-</span></div>
-      </div>
-      <div class="button-row">
-        <button id="startButton" type="button">측정 시작</button>
-        <button id="stopButton" type="button">측정 중지</button>
-      </div>
-    </section>
-  </main>
 
-  <script src="./app.js"></script>
+<body>
+  <div id="speed">0.0 km/h</div>
 </body>
+
 </html>
