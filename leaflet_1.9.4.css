@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "stardust";
+    src: url("./stardust.ttf") format("truetype");
+    font-style: normal;
+}
+
 .leaflet-pane,
 .leaflet-tile,
 .leaflet-marker-icon,
@@ -270,7 +276,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* general typography */
 .leaflet-container {
-	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-family: "stardust", Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-size: 0.75rem;
 	line-height: 1.5;
@@ -337,7 +343,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
-	font: bold 18px 'Lucida Console', Monaco, monospace;
+	font: bold 18px 'stardust', Monaco, monospace;
 	text-indent: 1px;
 	}
 
@@ -530,7 +536,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	text-align: center;
 	width: 24px;
 	height: 24px;
-	font: 16px/24px Tahoma, Verdana, sans-serif;
+	font: 16px/24px "stardust", Tahoma, Verdana, sans-serif;
 	color: #757575;
 	text-decoration: none;
 	background: transparent;

@@ -1,16 +1,72 @@
+@font-face {
+    font-family: "stardust";
+    src: url("./stardust.ttf") format("truetype");
+    font-style: normal;
+}
+
 html,
 body {
     margin: 0;
     height: 100%;
     background: #000;
     color: #fff;
-    font-family: sans-serif;
+    font-family: "stardust", sans-serif;
 }
 
 body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.border-frame {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.border-frame::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    box-sizing: border-box;
+
+    border: 2px solid rgba(210, 225, 255, 0.18);
+
+    /* 바깥 glow + 안쪽 depth */
+    box-shadow:
+        0 0 0 1px rgba(120, 170, 255, 0.08),
+        0 0 18px rgba(70, 130, 220, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+
+    clip-path: polygon(0 10px, 10px 10px, 10px 0,
+            calc(100% - 10px) 0, calc(100% - 10px) 10px, 100% 10px,
+            100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,
+            10px 100%, 10px calc(100% - 10px), 0 calc(100% - 10px));
+
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)) padding-box;
+}
+
+.border-frame::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    box-sizing: border-box;
+    clip-path: polygon(0 8px, 8px 8px, 8px 0,
+            calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+            100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+            8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px));
+
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.0)) top / 100% 1px no-repeat,
+        linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.0)) bottom / 100% 1px no-repeat,
+        linear-gradient(0deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.0)) left / 1px 100% no-repeat,
+        linear-gradient(0deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.0)) right / 1px 100% no-repeat;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(140, 180, 255, 0.06);
 }
 
 .app {
@@ -41,14 +97,23 @@ body {
     z-index: 9999;
 }
 
+.overlay-content h1 {
+    color: #ffffffcc;
+}
+
+.overlay-content p {
+    color: #ffffff77;
+}
+
 #startBtn {
     margin-top: 12px;
     border: 0;
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 12px 18px;
-    font-size: 16px;
+    font: bold 16px "stardust";
     font-weight: 700;
     cursor: pointer;
+    background: #ffffffcc;
 }
 
 .dashboard {
@@ -73,12 +138,10 @@ body {
     pointer-events: none;
     z-index: 500;
     background:
-        radial-gradient(
-            circle at center,
-            #00000000 0%,
-            #00000030 50%,
-            #000000ff 80%
-        );
+        radial-gradient(circle at center,
+            #00000000 50%,
+            #000000aa 70%,
+            #000000ff 90%);
 }
 
 .map,
@@ -105,7 +168,7 @@ body {
     background: transparent;
 }
 
-.leaflet-control-container{
+.leaflet-control-container {
     display: none;
 }
 
@@ -129,7 +192,7 @@ body {
     position: relative;
     width: var(--gauge-size);
     aspect-ratio: 1 / 1;
-    background: radial-gradient(circle, #00000030 0%, #000000dd 70%);
+    background: radial-gradient(circle, #00000030 0%, #000000ff 75%);
     border: max(2px, calc(var(--gauge-size) * 0.0125)) solid #555;
     border-radius: 50%;
     text-align: center;
@@ -160,6 +223,9 @@ body {
     background:
         conic-gradient(from 240deg,
             #33333390 0deg,
+            #33333390 35deg,
+            #95213290 36deg,
+            #33333390 37deg,
             #33333390 120deg,
             #7a6a4b90 138deg,
             #c8a96b90 144deg,
@@ -198,9 +264,9 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: clamp(11px, calc(var(--gauge-size) * 0.047), 18px);
-    font-weight: 500;
-    color: #555;
+    font-size: clamp(11px, calc(var(--gauge-size) * 0.047), 17px);
+    font-weight: 700;
+    color: #ffffffaa;
     z-index: 0;
 
     transform:
@@ -211,20 +277,28 @@ body {
     --angle: -120deg;
 }
 
+.label-30 {
+    --angle: -84deg;
+    color: #fff3db99;
+}
+
 .label-50 {
     --angle: -60deg;
 }
 
 .label-100 {
     --angle: 0deg;
+    color: #ffecc699;
 }
 
 .label-150 {
     --angle: 60deg;
+    color: #c8a96b99;
 }
 
 .label-200 {
     --angle: 120deg;
+    color: #8b4a5490;
 }
 
 .speed-content {
