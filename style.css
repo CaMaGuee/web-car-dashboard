@@ -78,16 +78,32 @@ body {
     inset: 0;
     border-radius: 50%;
     background:
-        conic-gradient(
-            from 240deg,
+        conic-gradient(from 240deg,
             #6f7f8c80 0deg 144deg,
             #c8a96b90 144deg 192deg,
             #8b4a5490 192deg 240deg,
-            transparent 240deg 360deg
-        );
+            transparent 240deg 360deg);
     -webkit-mask: radial-gradient(circle, transparent 66.5%, #000 67%);
     mask: radial-gradient(circle, transparent 66.5%, #000 67%);
     z-index: 0;
+}
+
+.needle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 3px;
+    height: 160px;
+    background: linear-gradient(to top,
+            #00000000 0%,
+            #00000000 60%,
+            #ff4d4d 82%,
+            #ff4d4d 95%,
+            #00000000 100%);
+
+    transform-origin: center bottom;
+    transform: translateX(-50%) translateY(-100%) rotate(-120deg);
+    border-radius: 999px;
 }
 
 .label-speed {
@@ -103,17 +119,28 @@ body {
     z-index: 2;
 
     transform:
-        rotate(var(--angle))
-        translateY(calc(var(--radius) * -1))
-        rotate(calc(var(--angle) * -1))
-        translate(-50%, -50%);
+        rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1)) translate(-50%, -50%);
 }
 
-.label-0   { --angle: -120deg; }
-.label-50  { --angle: -60deg; }
-.label-100 { --angle: 0deg; }
-.label-150 { --angle: 60deg; }
-.label-200 { --angle: 120deg; }
+.label-0 {
+    --angle: -120deg;
+}
+
+.label-50 {
+    --angle: -60deg;
+}
+
+.label-100 {
+    --angle: 0deg;
+}
+
+.label-150 {
+    --angle: 60deg;
+}
+
+.label-200 {
+    --angle: 120deg;
+}
 
 .speed-content {
     position: absolute;
@@ -133,10 +160,17 @@ body {
     color: #ccc;
 }
 
+#unit {
+    font-size: 18px;
+    color: #777;
+    margin: 0;
+}
+
 #status {
     font-size: 14px;
     color: #aaa;
-    margin: 0;
+    margin-top: 30px;
+    margin-bottom: -70px;
     max-width: 220px;
     line-height: 1.4;
 }

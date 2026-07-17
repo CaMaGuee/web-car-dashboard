@@ -3,6 +3,7 @@ const dashboardEl = document.getElementById("dashboard");
 const speedEl = document.getElementById("speed");
 const statusEl = document.getElementById("status");
 const startBtn = document.getElementById("startBtn");
+const needleEl = document.getElementById("needle");
 
 let watchId = null;
 let targetSpeedKmh = null;
@@ -29,7 +30,8 @@ function animateSpeed() {
     }
 
     // 화면에는 0.1 단위로 표시합니다.
-    speedEl.textContent = `${displaySpeedKmh.toFixed(1)} km/h`;
+    speedEl.textContent = `${displaySpeedKmh.toFixed(1)}`;
+    updateGauge(displaySpeedKmh);
 
     // 아직 목표값에 완전히 도달하지 않았다면 다음 프레임도 계속 진행합니다.
     if (displaySpeedKmh !== targetSpeedKmh) {
@@ -55,8 +57,11 @@ function startTracking() {
             if (speedMps == null) {
                 hasSpeed = false;
                 targetSpeedKmh = 0.0;
-                speedEl.textContent = "0.0";
                 statusEl.textContent = `측정 대기중 입니다. 정확도: ${Math.round(position.coords.accuracy)}m`;
+
+                if (animationId == null) {
+                    animationId = requestAnimationFrame(animateSpeed);
+                }
                 return;
             }
 
@@ -98,6 +103,17 @@ function startTracking() {
     );
 }
 
+function updateGauge(speedKmh) {
+    // 0 ~ 200 범위로 제한
+    const clamped = Math.max(0, Math.min(200, speedKmh));
+
+    // 0km/h = -120도, 200km/h = 120도
+    const angle = -120 + (clamped / 200) * 240;
+
+    needleEl.style.transform =
+        `translateX(-50%) translateY(-100%) rotate(${angle}deg)`;
+}
+
 async function handleStartClick() {
     if (!navigator.permissions) {
         startTracking();
@@ -122,7 +138,8 @@ async function handleStartClick() {
             return;
         }
 
-        if (result.state === "denied") {;
+        if (result.state === "denied") {
+            ;
             speedEl.textContent = "권한 차단됨";
             statusEl.textContent = "브라우저 주소창의 사이트 설정에서 위치 권한을 직접 허용해야 합니다.";
             return;
