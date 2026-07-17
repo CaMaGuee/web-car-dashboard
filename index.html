@@ -10,10 +10,17 @@
 
 <body>
   <main class="app">
+    <div class="overlay">
+      <div class="overlay-content">
+        <h1>위치 권한이 필요합니다.</h1>
+        <p>이 앱은 GPS를 사용하여 속도를 측정합니다. 위치 권한을 허용해주세요.</p>
+        <button id="startBtn">위치 권한 요청</button>
+      </div>
+    </div>
+
     <div class="speed-box">
       <div id="speed">대기중</div>
       <div id="status">위치 권한이 필요합니다.</div>
-      <button id="startBtn">위치 권한 허용하고 시작</button>
     </div>
   </main>
 
