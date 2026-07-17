@@ -80,9 +80,9 @@ body {
     background:
         conic-gradient(
             from 240deg,
-            #666 0deg 144deg,
-            #d0a000 144deg 192deg,
-            #c33 192deg 240deg,
+            #6f7f8c80 0deg 144deg,
+            #c8a96b90 144deg 192deg,
+            #8b4a5490 192deg 240deg,
             transparent 240deg 360deg
         );
     -webkit-mask: radial-gradient(circle, transparent 66.5%, #000 67%);
@@ -99,7 +99,7 @@ body {
     left: 50%;
     font-size: 15px;
     font-weight: 500;
-    color: #333;
+    color: #555;
     z-index: 2;
 
     transform:
