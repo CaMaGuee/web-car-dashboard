@@ -41,9 +41,9 @@ body {
         inset 0 0 0 1px rgba(255, 255, 255, 0.035);
 
     clip-path: polygon(0 10px, 10px 10px, 10px 0,
-            calc(100% - 10px) 0, calc(100% - 10px) 10px, 100% 10px,
-            100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,
-            10px 100%, 10px calc(100% - 10px), 0 calc(100% - 10px));
+            calc(90% - 10px) 0, calc(90% - 10px) 10px, 100% 10px,
+            100% calc(90% - 10px), calc(90% - 10px) calc(90% - 10px), calc(90% - 10px) 100%,
+            10px 100%, 10px calc(90% - 10px), 0 calc(90% - 10px));
 
     background:
         linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)) padding-box;
@@ -55,9 +55,9 @@ body {
     inset: 18px;
     box-sizing: border-box;
     clip-path: polygon(0 8px, 8px 8px, 8px 0,
-            calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
-            100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
-            8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px));
+            calc(90% - 8px) 0, calc(90% - 8px) 8px, 100% 8px,
+            100% calc(90% - 8px), calc(90% - 8px) calc(90% - 8px), calc(90% - 8px) 100%,
+            8px 100%, 8px calc(90% - 8px), 0 calc(90% - 8px));
 
     background:
         linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.0)) top / 100% 1px no-repeat,
