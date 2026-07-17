@@ -5,13 +5,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>속도계 테스트</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <div class="wrap">
-    <div id="speed">대기 중</div>
-    <div id="status">위치 권한을 허용하면 실제 속도를 표시합니다.</div>
-  </div>
+  <main class="app">
+    <div class="speed-box">
+      <div id="speed">대기 중</div>
+      <div id="status">위치 권한이 필요합니다.</div>
+      <button id="startBtn">위치 권한 허용하고 시작</button>
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
 </body>
 
 </html>
