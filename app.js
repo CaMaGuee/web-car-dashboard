@@ -78,7 +78,7 @@ function startTracking() {
         (error) => {
             if (error.code === 1) {
                 speedEl.textContent = "권한 필요";
-                statusEl.textContent = "위치 권한이 거부되었습니다. 브라우저 사이트 설정에서 허용해 주십시오.새로고침 후 다시 시도해 주십시오.";
+                statusEl.textContent = "위치 권한이 거부되었습니다.";
             } else if (error.code === 2) {
                 speedEl.textContent = "위치 불가";
                 statusEl.textContent = "현재 위치를 가져올 수 없습니다.";

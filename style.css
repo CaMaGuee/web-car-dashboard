@@ -49,6 +49,7 @@ body {
 }
 
 .speed-box {
+    position: relative;
     width: 320px;
     aspect-ratio: 1 / 1;
     background: #111;
@@ -63,10 +64,65 @@ body {
 
     box-sizing: border-box;
     padding: 24px;
+    overflow: hidden;
+}
+
+.speed-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            from 240deg,
+            #666 0deg 144deg,
+            #d0a000 144deg 192deg,
+            #c33 192deg 240deg,
+            transparent 240deg 360deg
+        );
+    -webkit-mask: radial-gradient(circle, transparent 66.5%, #000 67%);
+    mask: radial-gradient(circle, transparent 66.5%, #000 67%);
+    z-index: 0;
+}
+
+.label-speed {
+    --angle: 0deg;
+    --radius: 130px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    z-index: 2;
+
+    transform:
+        rotate(var(--angle))
+        translateY(calc(var(--radius) * -1))
+        rotate(calc(var(--angle) * -1))
+        translate(-50%, -50%);
+}
+
+.label-0   { --angle: -120deg; }
+.label-50  { --angle: -60deg; }
+.label-100 { --angle: 0deg; }
+.label-150 { --angle: 60deg; }
+.label-200 { --angle: 120deg; }
+
+.speed-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    z-index: 2;
+    width: 100%;
 }
 
 #speed {
-    font-size: 72px;
+    font-size: 68px;
     font-weight: 700;
     margin: 0 0 12px 0;
     color: #ccc;
