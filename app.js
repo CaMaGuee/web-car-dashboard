@@ -18,7 +18,7 @@ function startTracking() {
             const speedMps = position.coords.speed;
 
             if (speedMps == null) {
-                speedEl.textContent = "대기중...";
+                speedEl.textContent = "대기중";
                 statusEl.textContent = `측정 대기중 입니다. 정확도: ${Math.round(position.coords.accuracy)}m`;
                 return;
             }
