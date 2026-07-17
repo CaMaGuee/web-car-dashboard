@@ -1,25 +1,15 @@
+const overlayEl = document.getElementById("overlay");
+const dashboardEl = document.getElementById("dashboard");
 const speedEl = document.getElementById("speed");
 const statusEl = document.getElementById("status");
 const startBtn = document.getElementById("startBtn");
 
 let watchId = null;
-
-// 실제 측정값이 들어오면 이 목표값을 갱신합니다.
 let targetSpeedKmh = null;
-
-// 화면에 보여줄 현재 표시값입니다.
 let displaySpeedKmh = 0;
-
-// requestAnimationFrame ID를 저장해서 중복 실행을 막습니다.
 let animationId = null;
-
-// 마지막으로 유효한 속도 측정이 들어왔는지 여부입니다.
 let hasSpeed = false;
 
-/**
- * 속도 표시를 부드럽게 목표값으로 이동시키는 애니메이션 루프입니다.
- * lerp(선형 보간) 방식으로 현재 표시값을 목표값에 점점 가깝게 만듭니다.
- */
 function animateSpeed() {
     if (targetSpeedKmh == null) {
         animationId = null;
