@@ -161,8 +161,9 @@ body {
 }
 
 #unit {
-    font-size: 18px;
-    color: #777;
+    font-size: 14px;
+    color: #ccc;
+    font-weight: 700;
     margin: 0;
 }
 
