@@ -129,7 +129,7 @@ body {
     position: relative;
     width: var(--gauge-size);
     aspect-ratio: 1 / 1;
-    background: radial-gradient(circle, #00000030 0%, #000000ff 70%);
+    background: radial-gradient(circle, #00000030 0%, #000000dd 70%);
     border: max(2px, calc(var(--gauge-size) * 0.0125)) solid #555;
     border-radius: 50%;
     text-align: center;
